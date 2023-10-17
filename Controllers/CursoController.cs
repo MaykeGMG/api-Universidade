@@ -31,5 +31,16 @@ namespace apiUniversidade.Controllers
                 
             return cursos;
         }
+
+        [HttpPost]
+
+        public ActionResult Post(Curso curso){
+            _context.Cursos.Add(curso);
+            _context.SaveChanges();
+
+            return new CreatedAtRouteResult("GetCurso",
+                new{ id = curso.ID},
+                curso);
+        }
     }
 }
