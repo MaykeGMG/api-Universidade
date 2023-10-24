@@ -32,6 +32,17 @@ namespace apiUniversidade.Controllers
             return cursos;
         }
 
+        [HttpGet("{id:int}", Name = "GetCurso")]
+
+        public ActionResult<Curso> Get(int id)
+        {
+            var cursos = _context.Cursos.FirstOrDefault(p => p.ID == id);
+            if(cursos is null)
+                return NotFound("Curso não encontrado");
+                
+            return cursos;
+        }
+
         [HttpPost]
 
         public ActionResult Post(Curso curso){
