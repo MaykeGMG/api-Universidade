@@ -4,17 +4,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using apiUniversidade.Model;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
-namespace apiUniversidade.Context
+namespace apiUniversidade.Context;
+public class apiUniversidadeContext : IdentityDbContext
 {
-    public class apiUniversidadeContext : DbContext
-    {
-        public apiUniversidadeContext(DbContextOptions options) : base(options) { }
+    public apiUniversidadeContext(DbContextOptions options) : base(options) { }
 
-        public DbSet<Aluno>? Alunos { get; set; }
+    public DbSet<Aluno>? Alunos { get; set; }
 
-        public DbSet<Curso>? Cursos { get; set; }
+    public DbSet<Curso>? Cursos { get; set; }
 
-        public DbSet<Disciplina>? Disciplinas { get; set; }
-    }
+    public DbSet<Disciplina>? Disciplinas { get; set; }
 }
