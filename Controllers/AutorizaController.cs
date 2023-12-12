@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Markup;
@@ -47,16 +48,17 @@ namespace apiUniversidade.Controllers
                 return BadRequest(result.Errors);
 
             await _signInManager.SignInAsync(user, false);
-            return Ok();
+            return Ok(GeraToken(model));
         }
         
         [HttpPost("login")]
 
         public async Task<ActionResult> Login([FromBody] UsuarioDTO userInfo){
+
             var result = await _signInManager.PasswordSignInAsync(userInfo.Email, userInfo.Password, isPersistent: false, lockoutOnFailure: false);
 
             if(result.Succeeded)
-                return Ok();
+                return Ok(GeraToken(userInfo));
             else{
                 ModelState.AddModelError(string.Empty, "Login Inválido...");
                 return BadRequest(ModelState);
