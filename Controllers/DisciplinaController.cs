@@ -12,7 +12,7 @@ namespace apiUniversidade.Controllers
     [Authorize(AuthenticationSchemes = "Bearer")]
     [ApiController]
     [ApiVersion("1.0")]
-    [Route("[api/{v:apiversion}/disciplina]")]
+    [Route("api/{v:apiversion}/disciplina")]
     public class DisciplinaController : ControllerBase
     {
         private readonly ILogger<DisciplinaController> _Logger;

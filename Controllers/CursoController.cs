@@ -12,7 +12,7 @@ namespace apiUniversidade.Controllers
     [Authorize(AuthenticationSchemes = "Bearer")]
     [ApiController]
     [ApiVersion("1.0")]
-    [Route("[api/{v:apiversion}/curso]")]
+    [Route("api/{v:apiversion}/curso")]
     public class CursoController : ControllerBase
     {
         private readonly ILogger<CursoController> _Logger;
