@@ -57,16 +57,14 @@ namespace apiUniversidade.Controllers
                 curso);
         }
 
-        [HttpGet(Name = "GetExemplo")]
+        // [HttpGet(Name = "GetExemplo")]
 
-        [Route("exemplo")]
+        // [Route("exemplo")]
+        // public String GetExemplo(){
+        //     return "api v1";
+        // }
 
         [HttpPut("{id:int}")]
-
-        public String GetExemplo()
-        {
-            return "api v1";
-        }
 
         public ActionResult Put(int id, Curso curso)
         {
